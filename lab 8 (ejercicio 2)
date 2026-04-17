@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numero;
+    cout << "Ingrese el numero entero que representa el consumo de datos diario (en GB): ";
+    cin >> numero;
+
+    int maxConsumo = -1; 
+    int minConsumo = 10;  
+    int maxCount = 0;
+
+    while (numero > 0) {
+        int digito = numero % 10;  
+
+        
+        if (digito > maxConsumo) {
+            maxConsumo = digito;
+            maxCount = 1; 
+        } else if (digito == maxConsumo) {
+            maxCount++;  // Si el digito es igual al máximo, incrementa el contador
+        }
+
+        
+        if (digito < minConsumo) {
+            minConsumo = digito;
+        }
+
+        numero /= 10;  
+    }
+
+    cout << "El mayor consumo fue: " << maxConsumo << " GB" << endl;
+    cout << "El menor consumo fue: " << minConsumo << " GB" << endl;
+    cout << "El valor máximo se repite " << maxCount << " veces" << endl;
+
+    return 0;
+}
