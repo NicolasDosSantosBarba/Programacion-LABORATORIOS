@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int pin;
+    int intentos = 0;
+    int maxIntentos = 3;
+
+    while (intentos < maxIntentos) {
+        cout << "Ingrese su PIN de 4 dígitos: ";
+        cin >> pin;
+
+        
+        if (pin < 1000 || pin > 9999) {
+            cout << "PIN inválido. El PIN debe tener exactamente 4 dígitos." << endl;
+        } else {
+           
+            int digito1 = pin / 1000;  
+            int digito2 = (pin / 100) % 10; 
+            int digito3 = (pin / 10) % 10;  
+            int digito4 = pin % 10; 
+
+           
+            if (digito1 == digito2 || digito2 == digito3 || digito3 == digito4) {
+                cout << "PIN inválido. No puede contener dígitos consecutivos iguales." << endl;
+            } else {
+                cout << "PIN válido" << endl;
+                return 0; 
+            }
+        }
+
+        intentos++;
+        if (intentos < maxIntentos) {
+            cout << "Te quedan " << (maxIntentos - intentos) << " intentos." << endl;
+        } else {
+            cout << "Cuenta bloqueada. Has alcanzado el número máximo de intentos." << endl;
+        }
+    }
+
+    return 0;
+}
